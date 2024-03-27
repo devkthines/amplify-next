@@ -5,11 +5,9 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from '../src/amplifyconfiguration.json';
 Amplify.configure(config);
-import Image from "next/image";
-// import styles from "./page.module.css";
 import { uploadData } from 'aws-amplify/storage';
 
-export function Home({ signOut, user }: WithAuthenticatorProps) {
+export function Page({ signOut, user }: WithAuthenticatorProps) {
   const uploadDataInBrowser = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event?.target?.files) {
       const file = event.target.files[0];
@@ -55,4 +53,4 @@ export function Home({ signOut, user }: WithAuthenticatorProps) {
     </main>
   );
 }
-export default withAuthenticator(Home);
+export default withAuthenticator(Page);

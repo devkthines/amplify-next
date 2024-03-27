@@ -20,6 +20,12 @@
           "bucketName": "rsc-lp-s3",
           "region": "us-west-1"
         }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d37kj0lt2dbbik",
+          "type": "cicd"
+        }
       }
     }
   }
