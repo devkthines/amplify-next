@@ -162,10 +162,9 @@ export function Page({ signOut, user }: WithAuthenticatorProps) {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
               download
-              </Button></Link>
-          
+              </Button>
+              </Link>          
           </Box>
-
           <Box
            sx={{ flexGrow: 0 }}
            >

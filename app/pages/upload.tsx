@@ -71,7 +71,7 @@ export default function Home() {
       const timer = setInterval(() => {
         setProgress((oldProgress) => {
           if (oldProgress === 100) {
-            clearInterval(timer);
+            clearInterval(timer); 
             return 0;
           }
           const diff = Math.random() * 10;
