@@ -165,16 +165,16 @@ Amplify.configure(config, {
                 </Button>
                 </Link>          
             </Box>
-            <Box
-             sx={{ flexGrow: 0 }}
-             >
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            {/* <Box */}
+            {/* //  sx={{ flexGrow: 0, flexDirection: 'row' }} */}
+            {/* //  > */}
+              {/* <Tooltip title="Open settings"> */}
+                {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
                 <h1>Hello {user?.username}</h1>
                   {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */} 
-               </IconButton>
-              </Tooltip>
-              <Menu
+               {/* </IconButton> */}
+              {/* </Tooltip> */}
+              {/* <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
@@ -189,15 +189,15 @@ Amplify.configure(config, {
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
-              >
+              > */}
                 {/* {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))} */}
-                <Button onClick={signOut}>SignOut</Button>
-              </Menu>
-            </Box>
+                <Button variant="contained" color="error" onClick={signOut} sx={{mx: 2}}>SignOut</Button>
+              {/* </Menu> */}
+            {/* </Box> */}
           </Toolbar>
         </Container>
       </AppBar>
