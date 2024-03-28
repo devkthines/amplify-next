@@ -31,3 +31,9 @@ body {
     text-wrap: balance;
   }
 }
+button{
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border-radius: 25px;
+}
