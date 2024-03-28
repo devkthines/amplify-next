@@ -54,7 +54,7 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export default function Home() {
+export default function Upload() {
   // export function Home({ signOut, user }: WithAuthenticatorProps) {
   // const [progUploading, setProgUploading] = React.useState(false);
   const [selectedFolder, setSelectedFolder] = useState<string>("");
