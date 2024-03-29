@@ -181,11 +181,11 @@ export default function Page() {
       <button onClick={signOut}>Sign out</button> */}
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
   <Grid xs={12} className='text-center'>
-  <Typography variant="h1" gutterBottom>Upload a File!  </Typography>
+  <Typography variant="h1" gutterBottom sx={{textAlign:'center', margin:'50px 0'}}>Upload a File!  </Typography>
   </Grid>
-  <Grid  xs={12}display="flex" justifyContent="space-between" alignItems="center">      
+  <Grid  xs={12}display="flex" justifyContent="space-around" alignItems="center">      
       <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{  minWidth: 120, margin:'100px 0' }}>
       <InputLabel htmlFor="grouped-native-select">Select a Location</InputLabel>
       <Select
         native
