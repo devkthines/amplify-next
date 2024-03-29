@@ -8,39 +8,35 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import { Amplify } from 'aws-amplify';
+import '@aws-amplify/ui-react/styles.css';
+import config from '../amplifyconfiguration.json';
 import CloudCircleIcon from '@mui/icons-material/CloudCircle';
 import Link from "@mui/material/Link";
-import Image from "next/image";
-import { Amplify } from 'aws-amplify';
 import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
-import config from '../../src/amplifyconfiguration.json';
-import "@aws-amplify/ui-react/styles.css";
-import Upload from "./upload";
 
 Amplify.configure(config, {
-    Storage: {
-      S3: {
-        prefixResolver: async ({ accessLevel, targetIdentityId }) => {
-          if (accessLevel === 'guest') {
-            return '';
-          } else if (accessLevel === 'protected') {
-            return `myProtectedPrefix/${targetIdentityId}/`;
-          } else {
-            return `myPrivatePrefix/${targetIdentityId}/`;
-          }
+  Storage: {
+    S3: {
+      prefixResolver: async ({ accessLevel, targetIdentityId }) => {
+        if (accessLevel === 'guest') {
+          return '';
+        } else if (accessLevel === 'protected') {
+          return `myProtectedPrefix/${targetIdentityId}/`;
+        } else {
+          return `myPrivatePrefix/${targetIdentityId}/`;
         }
       }
     }
-  });
+  }
+});
+
+
   
-  export function Home({ signOut, user }: WithAuthenticatorProps) {
+  export function Nav({ signOut, user }: WithAuthenticatorProps) {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
       null
     );
@@ -116,7 +112,7 @@ Amplify.configure(config, {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Link href="/">
+                  <Link href="/upload">
                     {" "}
                     <Typography textAlign="center">Upload</Typography>
                   </Link>
@@ -149,14 +145,14 @@ Amplify.configure(config, {
               LP 
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link href="/">  <Button
+            <Link href="/upload">  <Button
                 
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
               upload
               </Button></Link>
-            <Link href="/download">  <Button
+            <Link href="/download" >  <Button
                 
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
@@ -201,13 +197,9 @@ Amplify.configure(config, {
           </Toolbar>
         </Container>
       </AppBar>
-       <main className="flex min-h-screen flex-col items-center justify-between p-24">
-       
-            <Upload/>
-      </main></>
+ </>
      
     );
   }
   
-  
-  export default withAuthenticator(Home);
+  export default withAuthenticator(Nav);

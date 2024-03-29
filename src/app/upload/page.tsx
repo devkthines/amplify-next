@@ -13,12 +13,12 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import ListSubheader from '@mui/material/ListSubheader';
 import FormControl from '@mui/material/FormControl';
 import {Select,SelectChangeEvent } from '@mui/material';
-
-
+import { Amplify } from 'aws-amplify';
+import '@aws-amplify/ui-react/styles.css';
+import config from '../../amplifyconfiguration.json';
+import "@aws-amplify/ui-react/styles.css";
 
 // import { Amplify } from 'aws-amplify';
 // import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
@@ -41,6 +41,21 @@ import {Select,SelectChangeEvent } from '@mui/material';
 //     }
 //   }
 // });
+Amplify.configure(config, {
+  Storage: {
+    S3: {
+      prefixResolver: async ({ accessLevel, targetIdentityId }) => {
+        if (accessLevel === 'guest') {
+          return '';
+        } else if (accessLevel === 'protected') {
+          return `myProtectedPrefix/${targetIdentityId}/`;
+        } else {
+          return `myPrivatePrefix/${targetIdentityId}/`;
+        }
+      }
+    }
+  }
+});
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -54,7 +69,7 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export default function Upload() {
+export default function Page() {
   // export function Home({ signOut, user }: WithAuthenticatorProps) {
   // const [progUploading, setProgUploading] = React.useState(false);
   const [selectedFolder, setSelectedFolder] = useState<string>("");
