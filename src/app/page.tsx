@@ -5,6 +5,7 @@ import '@aws-amplify/ui-react/styles.css';
 import config from '../amplifyconfiguration.json';
 import "@aws-amplify/ui-react/styles.css";
 // import Nav from '../components/nav'
+import '@aws-amplify/ui-react/styles.css';
 import Typography from '@mui/material/Typography';
 
 Amplify.configure(config, {
